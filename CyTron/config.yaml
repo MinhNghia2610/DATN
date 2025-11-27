@@ -1,0 +1,36 @@
+assistant:
+  name: "AIVA"
+  language: "vi"
+  voice: "default"
+  auto_collect: true
+  allow_autonomous_actions: false
+
+stt:
+  engine: "vosk"
+  model_path: "models/vosk/vn-model"
+
+tts:
+  engine: "pyttsx3"
+  rate: 150
+
+nlp:
+  embedding_model: "sentence-transformers/paraphrase-MiniLM-L6-v2"
+  use_cloud_llm: false
+  cloud_provider: "openai"
+  cloud_api_key: ""  # nếu dùng OpenAI sẽ điền API Key vào đây
+
+memory:
+  db_path: "data/aiva_memory.db"
+  faiss_index_path: "data/faiss.index"
+
+collector:
+  daily_tasks:
+    - name: "collect_system_stats"
+      enabled: true
+    - name: "collect_manual_health"
+      enabled: true
+
+report:
+  daily_cmd: "report daily"
+  weekly_cmd: "report weekly"
+  summary_cmd: "report summary"
